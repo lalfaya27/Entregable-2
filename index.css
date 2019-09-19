@@ -1,0 +1,14 @@
+#Index{
+    background-color:#D2D2D2;
+    width: 100%;
+    color: #333333;
+    height: 150px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px 0;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    display: flex;
+    float: none;
+}
