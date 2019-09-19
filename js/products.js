@@ -69,11 +69,11 @@ function sortAndShowProducts(sortCriteria, productsArray){
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL).then(function(resultObj)
          { if (resultObj.status === "ok") {
-            sortAndshowProductsList(resultObj.data);
+            sortAndshowProducts(ORDER_BY_PROD_PRICE, resultObj.data);
         }
     });
 document.getElementById("sortByPrice").addEventListener("click", function(){
-    sortAndShowProducts(ORDER_BY_PROD_PRICE);
+    sortAndShowProducts(ORDER_BY_PROD_PRICE, resultObj.data);
 });
 document.getElementById("clearRangeFilter").addEventListener("click", function(){
     document.getElementById("rangeFilterPriceMin").value = "";
