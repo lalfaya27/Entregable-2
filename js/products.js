@@ -18,7 +18,7 @@ if (criteria === ORDER_BY_PROD_PRICE){
 }
 
 
-function showProductsList(currentProductsArray){
+function showProductsList(){
     let htmlContentToAppend = "";
     for(let i = 0; i < currentProductsArray.length; i++){
         let product = currentProductsArray[i];
@@ -60,7 +60,7 @@ function sortAndShowProducts(sortCriteria, productsArray){
     currentProductsArray = sortProduct(currentSortCriteria, currentProductsArray);
 
     //Muestro las categorías ordenadas
-    showProductsList(currentProductsArray);
+    showProductsList();
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -69,7 +69,7 @@ function sortAndShowProducts(sortCriteria, productsArray){
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL).then(function(resultObj)
          { if (resultObj.status === "ok") {
-            sortAndshowProducts(ORDER_BY_PROD_PRICE, resultObj.data);
+            sortAndShowProducts(ORDER_BY_PROD_PRICE, resultObj.data);
         }
     });
 document.getElementById("sortByPrice").addEventListener("click", function(){
