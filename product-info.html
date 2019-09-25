@@ -42,14 +42,31 @@
           </div>
         </nav>
     <main role="main">
-        <div class="container mt-5">
-            <div class="alert alert-danger" role="alert">
-                <h4 class="alert-heading">¡A trabajar! :)</h4>
-                <p>Esta sección corresponde a: 2da. Entrega (Fecha: 29/09/2019) -> Punto 3.</p>
-                <hr>
-                <p class="mb-0">Fijate en la letra qué debes hacer <a target="_blank" href="Letra.pdf">aquí</a>.</p>
-            </div>
+      <div class="container mt-5">
+        <div class="text-center p-4">
+            <h2>Descripción del Productos</h2>
+            <p class="lead">Encontrarás aquí toda la información del Producto Seleccionado.</p>
         </div>
+        <h3 id="productName"></h3>
+        <hr class="my-3">
+        <dl>
+            <dt>Descripción</dt>
+            <dd><p id="productDescription"></p></dd>
+
+            <dt>Cantidad de productos vendidos</dt>
+            <dd><p id="productCount"></p></dd>
+
+            <dt>Costo por unidad</dt>
+            <dd><p id="productCost"></p></dd>
+
+            <dt>Imágenes ilustrativas</dt>
+            <dd>
+                <div class="row text-center text-lg-left pt-2" id="productImages">
+                </div>
+            </dd>
+        </dl>
+        <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
+    </div>
     </main>
     <footer class="text-muted">
       <div class="container">
