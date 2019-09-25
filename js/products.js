@@ -1,4 +1,6 @@
 const ORDER_BY_PROD_PRICE = "Precio";
+const ORDER_ASC_BY_PRICE = "Precio (Asc.)"
+const ORDER_DESC_BY_PRICE = " Precio (Desc)"
 var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minPrice = undefined;
@@ -6,13 +8,26 @@ var maxPrice = undefined;
 
 function sortProduct(criteria, array){
     let result = [];
-if (criteria === ORDER_BY_PROD_PRICE){
-    result = array.sort(function(a, b) {
-        if ( a.cost > b.cost ){ return -1; }
-        if ( a.cost < b.cost ){ return 1; }
-        return 0;    
+     if (criteria === ORDER_ASC_BY_PRICE)
+    {
+        result = array.sort(function(a, b) {
+            if ( a.cost < b.cost ){ return -1; }
+            if ( a.cost > b.cost ){ return 1; }
+            return 0;
         });
-    }
+    }else if (criteria === ORDER_DESC_BY_PRICE){
+        result = array.sort(function(a, b) {
+            if ( a.cost > b.cost ){ return -1; }
+            if ( a.cost < b.cost ){ return 1; }
+            return 0;
+        });
+    } else if (criteria === ORDER_BY_PROD_PRICE){
+            result = array.sort(function(a, b) {
+                if ( a.cost > b.cost ){ return -1; }
+                if ( a.cost < b.cost ){ return 1; }
+                return 0;    
+                });
+            }
 
     return result;
 }
@@ -27,7 +42,7 @@ function showProductsList(){
         ((maxPrice == undefined) || (maxPrice != undefined && parseInt(product.cost) <= maxPrice))){
 
         htmlContentToAppend += `
-        <a href="category-info.html" class="list-group-item list-group-item-action">
+        <a href="products-info.html" class="list-group-item list-group-item-action">
         <div class="row">
             <div class="col-3">
                 <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
@@ -69,9 +84,19 @@ function sortAndShowProducts(sortCriteria, productsArray){
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL).then(function(resultObj)
          { if (resultObj.status === "ok") {
-            sortAndShowProducts(ORDER_BY_PROD_PRICE, resultObj.data);
+            sortAndShowProducts(ORDER_ASC_BY_PRICE, resultObj.data);
         }
     });
+
+    document.getElementById("sortAsc").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_ASC_BY_PRICE, currentProductsArray);
+    });
+
+    document.getElementById("sortDesc").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_DESC_BY_PRICE, currentProductsArray);
+    });
+
+
 document.getElementById("sortByPrice").addEventListener("click", function(){
     sortAndShowProducts(ORDER_BY_PROD_PRICE, resultObj.data);
 });
@@ -108,14 +133,4 @@ document.getElementById("rangeFilterPrice").addEventListener("click", function()
     showProductsList(currentProductsArray);
 });
 });
-
-
-
-
-
-
-
-
-
-
 
