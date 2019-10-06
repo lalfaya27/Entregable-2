@@ -52,10 +52,10 @@
               <div class="col text-right">
                   <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
                       <label class="btn btn-light active" id="sortAsc" >
-                          <input type="radio" name="options" autocomplete="off" checked>Precio (Asc.)
+                          <input type="radio" name="options" checked>Precio (Asc.)
                       </label>
                       <label class="btn btn-light" id="sortDesc" >
-                          <input type="radio" name="options" autocomplete="off">Precio (Desc.)
+                          <input type="radio" name="options">Precio (Desc.)
                       </label>
                   </div>
               </div>
@@ -65,7 +65,7 @@
                 <div class="col-md-6 col-sm-12 mb-1 container">
                   <div class="row container p-0 m-0">
                     <div class="col">
-                      <p class="font-weight-normal text-right my-2" id="sortByPrice">Precio</p>
+                      <p class="font-weight-normal text-right my-2" id="sortByPrice">Precio (USD):</p>
                     </div>
                     <div class="col">
                       <input class="form-control" type="number" placeholder="min." id="rangeFilterPriceMin">
@@ -85,6 +85,8 @@
         <div class="container mt-5">
           <div id="contendorProductos">
           </div>
+        </div>
+        </div>
     <footer class="text-muted bg-light">
       <div class="container">
         <p class="float-right">
