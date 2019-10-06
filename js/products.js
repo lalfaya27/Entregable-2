@@ -1,4 +1,3 @@
-const ORDER_BY_PROD_PRICE = "Precio";
 const ORDER_ASC_BY_PRICE = "Precio (Asc.)"
 const ORDER_DESC_BY_PRICE = " Precio (Desc)"
 var currentProductsArray = [];
@@ -8,31 +7,22 @@ var maxPrice = undefined;
 
 function sortProduct(criteria, array){
     let result = [];
-     if (criteria === ORDER_ASC_BY_PRICE)
-    {
-        result = array.sort(function(a, b) {
-            if ( a.cost < b.cost ){ return -1; }
-            if ( a.cost > b.cost ){ return 1; }
-            return 0;
-        });
-    }else if (criteria === ORDER_DESC_BY_PRICE){
-        result = array.sort(function(a, b) {
-            if ( a.cost > b.cost ){ return -1; }
-            if ( a.cost < b.cost ){ return 1; }
-            return 0;
-        });
-    } else if (criteria === ORDER_BY_PROD_PRICE){
-            result = array.sort(function(a, b) {
-                if ( a.cost > b.cost ){ return -1; }
-                if ( a.cost < b.cost ){ return 1; }
-                return 0;    
-                });
+       if (criteria === ORDER_ASC_BY_PRICE){
+         result = array.sort(function(a, b) {
+             if ( a.cost < b.cost ){ return -1; }
+             if ( a.cost > b.cost ){ return 1; }
+             return 0;
+         });
+     } else if (criteria === ORDER_DESC_BY_PRICE){
+             result = array.sort(function(a, b) {
+                 if ( a.cost > b.cost ){ return -1; }
+                 if ( a.cost < b.cost ){ return 1; }
+                 return 0;    
+                 });
             }
 
     return result;
 }
-
-
 function showProductsList(){
     let htmlContentToAppend = "";
     for(let i = 0; i < currentProductsArray.length; i++){
@@ -50,10 +40,12 @@ function showProductsList(){
         <div class="col">
                 <div class="d-flex w-100 justify-content-between">
                         <h4 class="mb-1">`+ product.name +`</h4>
-                        <small class="text-muted">` + product.soldCount + ` artículos</small>
+                        <small class="text-muted"> Cantidad de Productos Vendidos: ` + product.soldCount + `</small>
                     </div>
+                    <br>
                     <p class="mb-1">`+ product.description +`</p>
-                    <p class="mb-1">`+ product.currency + product.cost + `</p>
+                    <br>
+                    <p class="mb-1">`+ product.currency + " "  + product.cost + `</p>
                 </div>
             </div>
         </a>
@@ -75,7 +67,7 @@ function sortAndShowProducts(sortCriteria, productsArray){
     currentProductsArray = sortProduct(currentSortCriteria, currentProductsArray);
 
     //Muestro las categorías ordenadas
-    showProductsList();
+    showProductsList(currentProductsArray);
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -89,16 +81,12 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("sortAsc").addEventListener("click", function(){
-        sortAndShowProducts(ORDER_ASC_BY_PRICE, currentProductsArray);
+        sortAndShowProducts(ORDER_ASC_BY_PRICE);
     });
 
     document.getElementById("sortDesc").addEventListener("click", function(){
-        sortAndShowProducts(ORDER_DESC_BY_PRICE, currentProductsArray);
+        sortAndShowProducts(ORDER_DESC_BY_PRICE);
     });
-
-
-document.getElementById("sortByPrice").addEventListener("click", function(){
-    sortAndShowProducts(ORDER_BY_PROD_PRICE, resultObj.data);
 });
 document.getElementById("clearRangeFilter").addEventListener("click", function(){
     document.getElementById("rangeFilterPriceMin").value = "";
@@ -132,5 +120,5 @@ document.getElementById("rangeFilterPrice").addEventListener("click", function()
 
     showProductsList(currentProductsArray);
 });
-});
+
 
